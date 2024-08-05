@@ -522,4 +522,4 @@ ${Array.from(statements.values())
  * @returns
  */
 const isExported = (i: { typeName: string; value: ts.VariableStatement }) =>
-  i.value.modifiers?.find((mod) => mod.kind === ts.SyntaxKind.ExportKeyword);
+  i.value.modifiers?.find((mod) => mod?.kind === ts.SyntaxKind.ExportKeyword);

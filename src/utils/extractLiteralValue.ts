@@ -18,10 +18,10 @@ export function extractLiteralValue(node: ts.Expression): string {
       return "-" + node.operand.text;
     }
   }
-  if (node.kind === ts.SyntaxKind.TrueKeyword) {
+  if (node?.kind === ts.SyntaxKind.TrueKeyword) {
     return "true";
   }
-  if (node.kind === ts.SyntaxKind.FalseKeyword) {
+  if (node?.kind === ts.SyntaxKind.FalseKeyword) {
     return "false";
   }
   return "";

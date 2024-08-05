@@ -16,9 +16,9 @@ export function fixOptionalAny(
   function shouldAddQuestionToken(node: ts.TypeNode) {
     return (
       // https://github.com/fabien0102/ts-to-zod/issues/140
-      node.kind === ts.SyntaxKind.AnyKeyword ||
+      node?.kind === ts.SyntaxKind.AnyKeyword ||
       // https://github.com/fabien0102/ts-to-zod/issues/239
-      node.kind === ts.SyntaxKind.UndefinedKeyword ||
+      node?.kind === ts.SyntaxKind.UndefinedKeyword ||
       // Handling type referencing imported types
       // https://github.com/fabien0102/ts-to-zod/issues/203
       (ts.isTypeReferenceNode(node) &&

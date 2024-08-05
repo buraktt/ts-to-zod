@@ -431,7 +431,7 @@ function buildZodPrimitive({
 
     // Deal with `Record<>` syntax
     if (identifierName === "Record" && typeNode.typeArguments) {
-      if (typeNode.typeArguments[0].kind === ts.SyntaxKind.StringKeyword) {
+      if (typeNode.typeArguments?.[0]?.kind === ts.SyntaxKind.StringKeyword) {
         // Short version (`z.record(zodType)`)
         return buildZodSchema(
           z,
@@ -567,7 +567,7 @@ function buildZodPrimitive({
       typeNode.types.find(
         (i) =>
           ts.isLiteralTypeNode(i) &&
-          i.literal.kind === ts.SyntaxKind.NullKeyword
+          i.literal?.kind === ts.SyntaxKind.NullKeyword
       )
     );
 
@@ -728,10 +728,10 @@ function buildZodPrimitive({
       }
     }
 
-    if (typeNode.literal.kind === ts.SyntaxKind.TrueKeyword) {
+    if (typeNode.literal?.kind === ts.SyntaxKind.TrueKeyword) {
       return buildZodSchema(z, "literal", [f.createTrue()], zodProperties);
     }
-    if (typeNode.literal.kind === ts.SyntaxKind.FalseKeyword) {
+    if (typeNode.literal?.kind === ts.SyntaxKind.FalseKeyword) {
       return buildZodSchema(z, "literal", [f.createFalse()], zodProperties);
     }
   }
@@ -906,7 +906,7 @@ function buildZodPrimitive({
     );
   }
 
-  switch (typeNode.kind) {
+  switch (typeNode?.kind) {
     case ts.SyntaxKind.StringKeyword:
       return buildZodSchema(z, "string", [], zodProperties);
     case ts.SyntaxKind.BooleanKeyword:

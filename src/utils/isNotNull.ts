@@ -9,6 +9,6 @@ import ts from "typescript";
 export function isNotNull(node: ts.TypeNode) {
   return (
     !ts.isLiteralTypeNode(node) ||
-    node.literal.kind !== ts.SyntaxKind.NullKeyword
+    node.literal?.kind !== ts.SyntaxKind.NullKeyword
   );
 }

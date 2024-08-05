@@ -47,7 +47,7 @@ export function resolveDefaultProperties(sourceText: string) {
 }
 
 function omitUndefinedKeyword(node: ts.Node) {
-  if (node.kind === ts.SyntaxKind.UndefinedKeyword) {
+  if (node?.kind === ts.SyntaxKind.UndefinedKeyword) {
     return undefined;
   }
   return node;
